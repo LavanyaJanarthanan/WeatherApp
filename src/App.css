@@ -197,7 +197,8 @@ body{
     box-shadow: none;
   }
   .input-container {
-    
+    /* Keep input and search icon in a row */
+    flex-direction: row;
     border-radius: 8px;
     padding: 5px 0;
   }
@@ -209,9 +210,14 @@ body{
     padding: 8px;
     height: 28px;
   }
+  .image {
+    margin-bottom: 10px; /* Reduce space below weather icon */
+    height: 110px;
+  }
   .image img {
     width: 100px;
     height: 100px;
+    margin-bottom: 0;
   }
   .temp, .location, .country, .description {
     font-size: 22px;
@@ -222,12 +228,9 @@ body{
   .country {
     font-size: 14px;
   }
-
   .description{
-    padding-top: 10px;
+    padding-top: 6px;
   }
-  
-
   .cord {
     flex-direction: column;
     gap: 4px;
