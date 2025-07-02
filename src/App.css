@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  font-family: "Roboto", sans-serif;
+}
+
+body{
+  margin:0;
+  padding:0;
+  background-color: #33607e;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.container{
+  width:500px;
+  padding:20px;
+  background-color: #fff;
+  background-image: url(assets/bg.jpeg) ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.input-container{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  border: 2px solid #16d5ea;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.cityInput{
+  flex:1;
+  height:30px;
+  border:none;
+  outline:none;
+  font-size:16px;
+  padding:10px;
+}
+
+.search-icon{
+  padding:10px;
+  height:30px;
+  cursor:pointer;
+}
+
+.search-icon img{
+  margin-top: 5px;
+}
+
+.image{
+  text-align: center;
+  height: 150px;
+  margin-bottom:30px;
+}
+
+.image img{
+  margin:10px;
+  margin-bottom:10px;
+  width:160px;
+  height:160px;
+}
+
+.temp,.location,.country,.description{
+  margin:5px;
+  font-size:35px;
+  color:#333;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.description{
+  border-radius: 5px;
+  color:#146a2e;
+}
+
+.temp{
+  font-weight: 500;
+ 
+}
+
+.location{
+  color:#3a1ad5;
+  font-weight: 400;
+  font-size:40px;
+}
+
+.country{
+  font-size:18px;
+  color:#5e1515;
+  font-weight: 500;
+}
+
+.cord{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+  text-align:center;
+}
+
+.element1{
+  margin-left:50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  
+}
+
+.element2{
+  margin-right:50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  
+}
+
+.cord div{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+}
+
+.cord div span{
+  font-size:14px;
+  color:rgb(13, 154, 154);
+  font-weight: 1000;
+}
+
+.humidity-percent,.wind-percent,.cord div span:nth-child(2){
+  font-size:18px;
+  font-weight:bold;
+  color:#952323;
+  padding-top:5px;
+}
+
+.data-container{
+  display:flex;
+  justify-content: space-between;
+  margin-top:20px;
+}
+
+.element1,.element2{
+  text-align:center;
+}
+
+.icon{
+  height:50px;
+  width:50px;
+}
+
+.text{
+  font-size:15px;
+  font-weight:bold;
+  color:#4726bdf4;
+}
+
+.copyright{
+  text-align:center;
+  font: size 12%;
+  color:#146a2e;
+
+}
+
+.copyright span{
+  color:#333;
+}
+
+.city-not-found, .loading-message, .error-message{
+  margin-top:10px;
+  color:#888;
+  font-size:25px;
+  font-weight:400;
+  text-align:center;
+}
