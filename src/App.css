@@ -34,6 +34,7 @@ body{
   border: 2px solid #16d5ea;
   border-radius:10px;
   overflow:hidden;
+  background-color: #fff;
 }
 
 .cityInput{
@@ -53,6 +54,7 @@ body{
 
 .search-icon img{
   margin-top: 5px;
+  background-color: white;
 }
 
 .image{
@@ -184,4 +186,66 @@ body{
   font-size:25px;
   font-weight:400;
   text-align:center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 95vw;
+    min-width: unset;
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .input-container {
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 5px 0;
+  }
+  .cityInput {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .search-icon {
+    padding: 8px;
+    height: 28px;
+  }
+  .image img {
+    width: 100px;
+    height: 100px;
+  }
+  .temp, .location, .country, .description {
+    font-size: 22px;
+  }
+  .location {
+    font-size: 26px;
+  }
+  .country {
+    font-size: 14px;
+  }
+  .cord {
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .element1, .element2 {
+    margin: 0;
+  }
+  .data-container {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .icon {
+    height: 36px;
+    width: 36px;
+  }
+  .text {
+    font-size: 12px;
+  }
+  .copyright {
+    font-size: 10px;
+  }
+  .city-not-found, .loading-message, .error-message {
+    font-size: 16px;
+  }
 }

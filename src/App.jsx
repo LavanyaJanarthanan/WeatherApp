@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useRef } from 'react';
 import './App.css';
 //import PropTypes from "prop-types";
 
@@ -77,10 +77,8 @@ const WeatherDetails=({icon,temp,city,country,lat,log,humidity,wind,description}
 function App() {
     let api_key="fadb266532437c572e9c680f52080945";
 
-
   const[text,setText]=useState("Chennai")
   const[icon, setIcon]= useState(snowIcon);
-  
   const[temp, setTemp]= useState(0);
   const[city,setCity]=useState("Chennai");
   const[country,setCountry]=useState("IN");
@@ -92,6 +90,7 @@ function App() {
   const[cityNotFound, setCityNotFound]=useState(false);
   const[loading,setLoading]=useState(false);
   const[error,setError]=useState(null);
+  const inputRef = useRef(null);
 
   const weatherIconMap={
     "01d": clearIcon,
@@ -112,13 +111,13 @@ function App() {
 
 
   };
-
   
   const search=async ()=>{
     setLoading(true);
+    setError(null);
+    setCityNotFound(false);
   
-  let url=`https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=${api_key}&units=M
-  etric`;
+  let url=`https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=${api_key}&units=Metric`;
 
   try{
 
@@ -134,7 +133,7 @@ function App() {
     setDescription(data.weather[0].description);
     setHumidity(data.main.humidity);
     setWind(data.wind.speed);
-    setTemp(Math.floor(data.main.temp-273));
+    setTemp(Math.round(data.main.temp)); // Use Celsius directly, no conversion needed
     setCity(data.name);
     setCountry(data.sys.country);
     setLat(data.coord.lat);
@@ -156,48 +155,47 @@ setError("An error occurred while fetching weather data.");
 
 
 const handleCity=(e)=>{
-setText(e.target.value);
-};
+    setText(e.target.value);
+    setError(null);
+    setCityNotFound(false);
+  };
 
 const handleKeyDown=(e)=>{
-  if(e.key==="Enter"){
+  if(e.key==="Enter" && !loading){
     search();
   }
 };
 useEffect(function (){
   search();
+  if(inputRef.current){
+    inputRef.current.focus();
+  }
 }, []);
   return (
     <>
       <div className="container">
-        <div className="input-container">
-          <input type="text" className="cityInput" placeholder="Search City" onChange={handleCity} value={text} onKeyDown={handleKeyDown}/>
-          <div className="search-icon" onClick={()=>search()}>
+        <div className={`input-container${cityNotFound || error ? ' input-error' : ''}`}> 
+          <input
+            type="text"
+            className="cityInput"
+            placeholder="Search City"
+            onChange={handleCity}
+            value={text}
+            onKeyDown={handleKeyDown}
+            ref={inputRef}
+            disabled={loading}
+            aria-label="Search City"
+          />
+          <div className="search-icon" onClick={()=>!loading && search()} style={{opacity: loading ? 0.5 : 1, pointerEvents: loading ? 'none' : 'auto'}}>
             <img src={searchIcon} alt="Search"/>
           </div>
-
         </div>
         {!loading &&  !cityNotFound && <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humidity={humidity} wind={wind} description={description}/>}
-      {loading && <div className="loading-message">Loading...</div>}
-  {error && <div className="error-message">error</div>}
-  {cityNotFound && <div className="city-not-found">City not found</div>}
-  
-      
-      
-      
+        {loading && <div className="loading-message"><span className="loader"></span> Loading...</div>}
+        {error && <div className="error-message">{error}</div>}
+        {cityNotFound && <div className="city-not-found">City not found</div>}
       </div>
-
-
-
-
-
-
-
-
-
-
-
-      </>
+    </>
   )
 }
 
