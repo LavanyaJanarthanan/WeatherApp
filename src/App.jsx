@@ -1,6 +1,6 @@
 import { useState,useEffect,useRef } from 'react';
 import './App.css';
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 /*Images*/
 import searchIcon from "./assets/search.png";
@@ -58,20 +58,17 @@ const WeatherDetails=({icon,temp,city,country,lat,log,humidity,wind,description}
   );
 };
 
-/*WeatherDetails.propTypes={
+WeatherDetails.propTypes = {
   icon: PropTypes.string.isRequired,
-  temp:PropTypes.number.isRequired,
-  city:PropTypes.string.isRequired,
-  country:PropTypes.string.isRequired,
-  humidity:PropTypes.number.isRequired,
-  wind:PropTypes.number.isRequired,
-    lat:PropTypes.number.isRequired,
-  log:PropTypes.number.isRequired,
-
-
-          
-
-};*/
+  temp: PropTypes.number.isRequired,
+  city: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
+  humidity: PropTypes.number.isRequired,
+  wind: PropTypes.number.isRequired,
+  lat: PropTypes.number.isRequired,
+  log: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 
 function App() {
