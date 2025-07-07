@@ -151,11 +151,11 @@ setError("An error occurred while fetching weather data.");
 };
 
 
-const handleCity=(e)=>{
-    setText(e.target.value);
-    setError(null);
-    setCityNotFound(false);
-  };
+const handleCity = (e) => {
+  setText(e.target.value);
+  setError(null);
+  setCityNotFound(false);
+};
 
 const handleKeyDown=(e)=>{
   if(e.key==="Enter" && !loading){
